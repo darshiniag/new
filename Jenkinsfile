@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "shreya"
+        DOCKER_IMAGE = "darshiniag/darsh"
     }
 
     stages {
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKER_IMAGE%:latest .'
+                bat 'docker build -t %DOCKER_IMAGE%:v1 .'
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push %DOCKER_IMAGE%:latest'
+                bat 'docker push %DOCKER_IMAGE%:v1'
             }
         }
     }
